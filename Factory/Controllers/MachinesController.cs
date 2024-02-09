@@ -27,10 +27,16 @@ public class MachinesController : Controller
   [HttpPost]
   public ActionResult Create(Machine machine)
   {
-    //maybe something for Status "status"
-    _db.Machines.Add(machine);
-    _db.SaveChanges();
-    return RedirectToAction("Index");
+    if (!ModelState.IsValid)
+    {
+      return View(machine);
+    }
+    else
+    {
+      _db.Machines.Add(machine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
   public ActionResult Details(int id)
   {
