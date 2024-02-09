@@ -27,6 +27,7 @@ public class MachinesController : Controller
   [HttpPost]
   public ActionResult Create(Machine machine)
   {
+    //maybe something for Status "status"
     _db.Machines.Add(machine);
     _db.SaveChanges();
     return RedirectToAction("Index");
