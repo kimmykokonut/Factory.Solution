@@ -5,9 +5,12 @@
 <h3>Add new engineer</h3>
 <hr />
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
-<p>@Html.ValidationMessageFor(model => model.Level, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
-<p>@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
-<p>@Html.ValidationMessageFor(model => model.Renewal, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Level, "", new { @class = "text-danger", @style = "font-weight: 600;" })
+</p>
+<p>@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger", @style = "font-weight: 600;" })
+</p>
+<p>@Html.ValidationMessageFor(model => model.Renewal, "", new { @class = "text-danger", @style = "font-weight: 600;" })
+</p>
 
 @using (Html.BeginForm())
 {
@@ -25,4 +28,3 @@
   <br />
   <input type="submit" value="add to system" />
 }
-<p>attach machine</p>

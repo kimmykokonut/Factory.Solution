@@ -5,7 +5,7 @@ using Factory.Models;
 
 namespace Factory
 {
-  class Program 
+  class Program
   {
     static void Main(string[] args)
     {

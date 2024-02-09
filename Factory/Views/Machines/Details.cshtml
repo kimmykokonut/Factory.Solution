@@ -9,9 +9,7 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
 <h3>Installed: @Html.DisplayFor(model => model.InstallDate)</h3>
-
 <h3>Inspected: @Html.DisplayFor(model => model.Inspection)</h3>
-
 <h3>@Html.DisplayNameFor(model => model.Status): @Html.DisplayFor(model => model.Status)</h3>
 <hr />
 @if (@Model.JoinEntities.Count == 0)
@@ -33,7 +31,6 @@ else
     }
   </ul>
 }
-
 <hr />
 <p>@Html.ActionLink("Add a machine", "Create")</p>
 <p>@Html.ActionLink("Update details", "Edit", new { id = Model.MachineId })</p>

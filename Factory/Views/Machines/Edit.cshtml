@@ -1,7 +1,6 @@
 @model Factory.Models.Machine
 
-<h2>Edit</h2>
-<h4>Editing: "@Model.Name"</h4>
+<h2>Edit for: "@Model.Name"</h2>
 
 @using (Html.BeginForm())
 {
@@ -21,7 +20,7 @@
   <option value="Operational">Operational</option>
   <option value="Malfunctioning">Malfunctioning</option>
   <option value="In-Repair">In for repairs</option>
-</select>
+  </select>
   <br />
   <input type="submit" value="Update" />
 }

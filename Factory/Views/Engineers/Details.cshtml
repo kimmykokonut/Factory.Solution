@@ -22,7 +22,7 @@ else
 @using (Html.BeginForm("ChangeStatus", "Engineers", new { id = Model.EngineerId }))
 {
   <label>Change status</label>
-  <input type="submit" value="working/idle"/>
+  <input type="submit" value="working/idle" />
 }
 
 <h3>@Html.DisplayNameFor(model => model.Renewal): @Html.DisplayFor(model => model.Renewal)</h3>
@@ -35,7 +35,7 @@ else
 {
   <h4>Machines assigned: </h4>
   <ul>
-    @foreach(EngineerMachine join in Model.JoinEntities)
+  @foreach (EngineerMachine join in Model.JoinEntities)
     {
       <li>@join.Machine.Name</li>
       @using (Html.BeginForm("DeleteJoin", "Engineers"))
@@ -46,8 +46,6 @@ else
     }
   </ul>
 }
-
-
 <hr />
 <p>@Html.ActionLink("Add an engineer", "Create")</p>
 <p>@Html.ActionLink("Update info", "Edit", new { id = Model.EngineerId })</p>

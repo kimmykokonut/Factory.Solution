@@ -15,5 +15,4 @@ public class Machine
   public string Inspection { get; set; } = "";
   public string Status { get; set; }
   public List<EngineerMachine> JoinEntities { get; set; }
-
 }

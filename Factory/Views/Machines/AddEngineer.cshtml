@@ -11,18 +11,17 @@
   @Html.HiddenFor(model => model.MachineId)
 
   @if (ViewBag.EngineerId == null)
-{
-  <hr />
-  <p>No engineers are in the system at this time...</p>
-  <p>You can add a new engineer @Html.ActionLink("here", "Create", "Engineers")</p>
-  <hr />
-}
-else
-{
+  {
+    <hr />
+    <p>No engineers are in the system at this time...</p>
+    <p>You can add a new engineer @Html.ActionLink("here", "Create", "Engineers")</p>
+    <hr />
+  }
+  else
+  {
     @Html.Label("Select engineer")
     @Html.DropDownList("EngineerId")
 
     <input type="submit" value="Save" />
   }
 }
-

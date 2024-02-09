@@ -2,7 +2,8 @@
 
 _by Kim Robinson_
 
-## An independent code review for Epicodus demonstrating skills in managing Many to Many relationships. Prompt: You've been contracted by the factory of the famous Dr. Sillystringz to build an application to keep track of their machine repairs. You are to build an MVC web application to manage their engineers, and the machines they are licensed to fix.
+## An independent code review for Epicodus demonstrating skills in managing Many to Many relationships. 
+### Prompt: You've been contracted by the factory of the famous Dr. Sillystringz to build an application to keep track of their machine repairs. You are to build an MVC web application to manage their engineers, and the machines they are licensed to fix.
 
 ###  This app will allow a user to:
     - see a list of all Engineers
@@ -15,6 +16,7 @@ _by Kim Robinson_
     - add/remove relationships between engineers and machines and vice-versa
     - see a splash page with a full list of all engineers and machines
     - access full CRUD capabilities with both Engineers and Machines
+    - toggle button for engineer status from detail page as idle/working
 
 ### Technologies Used
 
@@ -164,7 +166,7 @@ PROJECTNAME.Solution/PROJECTNAME/appsettings.json
 ```
 
 ## ...Back to VSCode's Terminal...
-1. While in the terminal, navigate to the project's production directory called "Factory" and type `$ dotnet build` to compile the application's code (this creates the bin folder).  Type `$ dotnet restore` to create the obj folder.
+1. While in the terminal, navigate to the project's production directory called "Factory" and type `$ dotnet build` to compile the application's code and install all needed dependencies (this creates the bin folder).  Type `$ dotnet restore` to create the obj folder.
 
 ### Database Migrations
 We will use migrations to create a new database based on our code. 

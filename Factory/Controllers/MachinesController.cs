@@ -88,9 +88,9 @@ public class MachinesController : Controller
   [HttpPost]
   public ActionResult AddEngineer(Machine machine, int engineerId)
   {
-    #nullable enable
+#nullable enable
     EngineerMachine? joinEntity = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == machine.MachineId));
-    #nullable disable
+#nullable disable
     if (joinEntity == null && engineerId != 0)
     {
       _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = engineerId, MachineId = machine.MachineId });

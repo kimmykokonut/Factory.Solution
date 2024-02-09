@@ -2,9 +2,9 @@
   Layout = "_Layout";
 }
 @model Factory.Models.Machine
+
 <h3>Add a new machine</h3>
 <hr />
-
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
@@ -18,13 +18,10 @@
   <br />
   <label for="status">status</label>
   <select name="status" id="status">
-    <option value="Operational">Operational</option>
-    <option value="Malfunctioning">Malfunctioning</option>
-    <option value="In-Repair">In for repairs</option>
-  </select>
+  <option value="Operational">Operational</option>
+  <option value="Malfunctioning">Malfunctioning</option>
+  <option value="In-Repair">In for repairs</option>
+</select>
   <br />
   <input type="submit" value="add to system" />
 }
-
-@* //install date auto date/time on creation
-//inpsection date in update, not create *@
