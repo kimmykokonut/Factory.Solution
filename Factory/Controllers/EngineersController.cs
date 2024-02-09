@@ -20,4 +20,10 @@ public class EngineersController : Controller
     List<Engineer> model = _db.Engineers.ToList();
     return View(model);
   }
+  public ActionResult Details(int id)
+  {
+    Engineer thisEngineer = _db.Engineers
+    .FirstOrDefault(engineer => engineer.EngineerId == id);
+    return View(thisEngineer);
+  }
 }
