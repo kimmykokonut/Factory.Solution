@@ -1,0 +1,23 @@
+@model Factory.Models.Engineer
+
+<h2>Edit</h2>
+<h4>Editing: "@Model.Name"</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+  <br />
+  @Html.LabelFor(model => model.Level)
+  @Html.EditorFor(model => model.Level)
+  <br />
+  @Html.LabelFor(model => model.Phone)
+  @Html.EditorFor(model => model.Phone)
+  <br />
+  @Html.LabelFor(model => model.Renewal, "Renewal Date")
+  @Html.EditorFor(model => model.Renewal, new { htmlAttributes = new { @type = "date" } })
+  <br />
+  <input type="submit" value="Update" />
+}

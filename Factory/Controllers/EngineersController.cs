@@ -44,4 +44,16 @@ public class EngineersController : Controller
     _db.SaveChanges();
     return RedirectToAction("Details", new { id = id });
   }
+  public ActionResult Edit(int id)
+  {
+    Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+    return View(thisEngineer);
+  }
+  [HttpPost]
+  public ActionResult Edit(Engineer engineer)
+  {
+    _db.Engineers.Update(engineer);
+    _db.SaveChanges();
+    return RedirectToAction("Index");
+  }
 }

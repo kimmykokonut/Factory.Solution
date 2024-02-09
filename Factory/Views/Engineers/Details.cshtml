@@ -28,7 +28,7 @@ else
 <h3>@Html.DisplayNameFor(model => model.Renewal): @Html.DisplayFor(model => model.Renewal)</h3>
 <hr />
 <p>@Html.ActionLink("Add an engineer", "Create")</p>
-<p>@Html.ActionLink("Update details", "Edit")</p>
-<p>@Html.ActionLink("Delete engineer", "Delete")</p>
+<p>@Html.ActionLink("Update details", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete engineer", "Delete", new { id = Model.EngineerId })</p>
 
 <p>Attach machine to this engineer</p>
