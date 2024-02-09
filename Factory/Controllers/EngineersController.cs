@@ -17,8 +17,7 @@ public class EngineersController : Controller
   }
   public ActionResult Index()
   {
-    return View();
-    // List<ClassName> model = _db.Stylists.ToList();
-    // return View(model);
+    List<Engineer> model = _db.Engineers.ToList();
+    return View(model);
   }
 }
