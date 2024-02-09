@@ -9,8 +9,13 @@
 {
   @Html.HiddenFor(model => model.EngineerId)
 
-  @Html.Label("Select machine")
-  @Html.DropDownList("MachineId")
-
+  @Html.Label("Select machine(s)")
+  @foreach (var machine in ViewBag.Machines as List<Factory.Models.Machine>)
+    {
+      <div>
+        <input type="checkbox" id="@("MachineId_" + machine.MachineId)" name="MachineIds" value="@machine.MachineId" />
+        <label for="@("MachineId_" + machine.MachineId)">@machine.Name</label>
+      </div>
+    }
   <input type="submit" value="Save" />
 }
