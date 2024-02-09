@@ -8,8 +8,8 @@ public class Machine
   public int MachineId { get; set; }
   public string Name { get; set; }
   public string Description { get; set; }
-  public DateTime InstallDate { get; set; } = DateTime.now;
-  public string Inspection { get; set; }
+  public DateTime InstallDate { get; set; } = DateTime.Now;
+  public string Inspection { get; set; } = "";
   public string Status { get; set; }
   public List<EngineerMachine> JoinEntities { get; set; }
 
