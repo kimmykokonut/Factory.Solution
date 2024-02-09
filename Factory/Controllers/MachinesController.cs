@@ -74,7 +74,15 @@ public class MachinesController : Controller
   public ActionResult AddEngineer(int id)
   {
     Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
-    ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+    List<Engineer> engineers = _db.Engineers.ToList();
+    if (engineers.Count > 0)
+    {
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+    }
+    else
+    {
+      ViewBag.EngineerId = null;
+    }
     return View(thisMachine);
   }
   [HttpPost]
