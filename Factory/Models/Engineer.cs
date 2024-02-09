@@ -9,7 +9,7 @@ public class Engineer
   public string Name { get; set; }
   public string Level { get; set; }
   public string Phone { get; set; }
-  public DateTime HireDate { get; set; }
+  public DateTime HireDate { get; set; } = DateTime.Now;
   public bool IsActive { get; set; } = false;
   public string Renewal { get; set; }
   public List<EngineerMachine> JoinEntities { get; }

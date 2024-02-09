@@ -9,8 +9,22 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Level): @Html.DisplayFor(model => model.Level)</h3>
 <h3>@Html.DisplayNameFor(model => model.Phone): @Html.DisplayFor(model => model.Phone)</h3>
+
 <h3>@Html.DisplayNameFor(model => model.HireDate): @Html.DisplayFor(model => model.HireDate)</h3>
-<h3>@Html.DisplayNameFor(model => model.IsActive): @Html.DisplayFor(model => model.IsActive)</h3>
+@if (Model.IsActive)
+{
+  <h3>Status: Working</h3>
+}
+else
+{
+  <h3>Status: Idle</h3>
+}
+@using (Html.BeginForm("ChangeStatus", "Engineers", new { id = Model.EngineerId }))
+{
+  <label>Change status</label>
+  <input type="submit" value="working/idle"/>
+}
+
 <h3>@Html.DisplayNameFor(model => model.Renewal): @Html.DisplayFor(model => model.Renewal)</h3>
 <hr />
 <p>@Html.ActionLink("Add an engineer", "Create")</p>
