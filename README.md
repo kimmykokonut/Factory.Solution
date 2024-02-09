@@ -1,19 +1,20 @@
-## Template for ASP.NET Core MVC web application using EFCore and MySQL Database
-
-### Setup
-* Make sure parent directory is ProjectName.Solution
-* Change file names as necessary
-* commit .gitignore first!
-
-----------------
-# Title
+# Dr. Sillystringz's Factory
 
 _by Kim Robinson_
 
-## Description
+## An independent code review for Epicodus demonstrating skills in managing Many to Many relationships. Prompt: You've been contracted by the factory of the famous Dr. Sillystringz to build an application to keep track of their machine repairs. You are to build an MVC web application to manage their engineers, and the machines they are licensed to fix.
 
 ###  This app will allow a user to:
-    - DO THINGS
+    - see a list of all Engineers
+    - see a list of all Machines
+    - select an Engineer and see their details and a list of machines that belong to them
+    - select a Machine and see it's details and a list of engineers that are licensed to repair them
+    - add new engineers when hired
+    - add new machines when installed
+    - not be able to create engineer/machine if form fields are empty/invalid using model validation with validation attributes
+    - add/remove relationships between engineers and machines and vice-versa
+    - see a splash page with a full list of all engineers and machines
+    - access full CRUD capabilities with both Engineers and Machines
 
 ### Technologies Used
 
@@ -21,17 +22,12 @@ _by Kim Robinson_
 * ASP.Net Core Mvc
 * Entity Framework Core
 * MySql database
-* MySql Workbench
 * Git
 * CSS
 * Bootstrap
 * HTML Helper methods
 * MVC Razor
 * ViewBag
-* MSTest
-* TDD (Test Driven Development)
-* RGR Workflow (Red Green Refactor)
-* NuGet package with dotnet CLI
 
 ![SQL Design]()
 
@@ -39,7 +35,7 @@ _by Kim Robinson_
 
 _Currently not viewable on gh-pages. Please follow steps below to set up locally_
 
-1. Navigate to [my github repository](https://github.com/kimmykokonut/TBD.Solution) for this project 
+1. Navigate to [my github repository](https://github.com/kimmykokonut/Factory.Solution) for this project 
 
 2. Click the `Fork` button and  you will be taken to a new page where you can give your repository a new name and description. Choose "create fork".
 
@@ -69,7 +65,7 @@ _Currently not viewable on gh-pages. Please follow steps below to set up locally
     $ git push origin main
     ```
 (Now these three items will not be seen or pushed to your GitHub remote repository.)
-#### You must add and commit this .gitignore BEFORE creating obj, bin or appsetting.json file!
+#### You must add and commit this .gitignore BEFORE creating obj, bin or appsettings.json file!
 
 _You can now see all my files, but FIRST it is time for you to set up your database and protect the database connection string with appsettings.json_
 ------------------------------------------------
@@ -98,7 +94,7 @@ in your bash command line:
 `mysql> ` you are good.
 * Exit anytime by typing `exit`
 
-## MySQL Workbench
+## MySQL Workbench (nice to have if you want a visual check of your database, but not required)
 1. [Download](https://dev.mysql.com/downloads/workbench/) the MySQL Workbench `.dmg` file.  
 _Make sure it is the 8.0 version_ 
 2. Install MySQL Workbench to Applications folder
@@ -147,23 +143,9 @@ _Make sure it is the 8.0 version_
     (you can exit anytime by typing `exit`)
 5. Open MySQL Workbench and select `Local instance 3306`, enter your password and take a breath, you're almost there.
 ----------------------------------------------------
-## Import my .sql file to MySQL Workbench
-1. Ensure the MySQL server is running by opening Terminal/GitBase(Windows PowerShell) and enter command: `mysql -u[YOUR-USERNAME] -p[YOUR-PASSWORD]`
-The command prompt looks like `mysql>`
-2. Open MySQL Workbench, double click the instance, enter your password.  The MySQL instance should now be open.
-3. Download the kim_robinson.sql file from this project onto your local computer.  The file is located at `HairSalonSolution.kim_robinson.sql`
-4. In the Navigator > Administration window, select `Data Import/Restore`
-5. In Import Options select `Import from Self-Contained File`
-6. Navigate to the file you just downloaded.
-7. Under `Default Schema to be Imported To`, select the `New` button.
-        * Name your database as you see fit.
-        * Click Ok.
-8. Navigate to the tab called `Import Progress` and click `Start Import` at the bottom right corner of the window.
-9. Reopen the `Navigator > Schemas` tab. Right click and select `Refresh All`. Our database will appear!
------------------------------------------------
 ## Set up appsettings.json to include database connection string
 
-* Create a new file named `appsettings.json` and place in the production directory of the project 
+* Create a new file named `appsettings.json` and place in the production directory of the project (I will keep this as 'ProjectName' in case you want to rename your project)
 `PROJECTNAME.Solution/PROJECTNAME/appsettings.json`
 
 * Add this code to the appsettings.json file, replacing the following values with your own:
@@ -182,15 +164,24 @@ PROJECTNAME.Solution/PROJECTNAME/appsettings.json
 ```
 
 ## ...Back to VSCode's Terminal...
-1. While in the terminal, navigate to the project's production directory called "HairSalon" and type `$ dotnet build` to compile the application's code (this creates the bin folder).  Type `$ dotnet restore` to create the obj folder.
+1. While in the terminal, navigate to the project's production directory called "Factory" and type `$ dotnet build` to compile the application's code (this creates the bin folder).  Type `$ dotnet restore` to create the obj folder.
 
-### Testing 
-I have not needed to do any business logic testing using EFCore, but have left the directory intact if you would like to add more functionality and create your own tests.
-- To use MSTest, you need to use the NuGet package manager to install the packages in the .csproj file.  Navigate to the HairSalon.Tests directory in the terminal and run the command `$ dotnet build`
-- To run tests using MSTest, navigate to the HairSalon.Tests directory in your terminal and type `$ dotnet test`
+### Database Migrations
+We will use migrations to create a new database based on our code. 
+1. Install dotnet ef globally (if not already installed)
+`$ dotnet tool install --global dotnet-ef --version 6.0.0`
+2. Install the Microsoft.EntityFrameworkCore.Design package in the Production Directory of our application.
+`$ dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0`
+3.  If you need to make any changes to the Models or their properties, do it now, this next step will create your database based on that data.
+4. Create a migration now (and anytime you change your Models) (Initial for your first migration, then a descriptive name for future migrations)
+`$ dotnet ef migrations add Initial`
+5. Update the database with the migrations.
+`$ dotnet ef database update`
+6. IF you make a mistake and haven't pushed the changes to GitHub you can revert the last migration
+`$ dotnet ef migrations remove`
 
 ### Compile/Execute Local Server
-- (Terminal) In the working directory, type `$ dotnet run` to compile and exectute the server.  It will be available at [localhost5001](https://localhost:5001/) and [localhost5000](https://localhost:5000/)
+- (Terminal) In the working directory, type `$ dotnet run` to compile and execute the server.  It will be available at [localhost5001](https://localhost:5001/) and [localhost5000](https://localhost:5000/)
 
 _Optionally you can use a file watcher so you don't have to restart the server every time the code changes. Run this command `$ dotnet watch run` to make the server automatically update.  <br />If you need to restart the server, you can type `ctrl` + `r`._
 

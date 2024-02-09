@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ProjectName.Controllers; //change name
+namespace Factory.Controllers; 
 
 public class HomeController : Controller
 {
