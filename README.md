@@ -29,7 +29,7 @@ _by Kim Robinson_
 * MVC Razor
 * ViewBag
 
-![SQL Design]()
+![SQL Design](/Factory/wwwroot/images/sql-relationships.png)
 
 ## Setup/Installation Requirements
 
