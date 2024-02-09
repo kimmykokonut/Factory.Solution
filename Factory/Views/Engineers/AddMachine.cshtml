@@ -9,13 +9,23 @@
 {
   @Html.HiddenFor(model => model.EngineerId)
 
-  @Html.Label("Select machine(s)")
-  @foreach (var machine in ViewBag.Machines as List<Factory.Models.Machine>)
+  @if (ViewBag.Machines.Count == 0)
+  {
+    <hr />
+    <p>No machines are in the system at this time...</p>
+    <p>You can add a new machine @Html.ActionLink("here", "Create", "Machines")</p>
+    <hr />
+  }
+  else
+  {
+    @Html.Label("Select machine(s)")
+    @foreach (var machine in ViewBag.Machines as List<Factory.Models.Machine>)
     {
       <div>
-        <input type="checkbox" id="@("MachineId_" + machine.MachineId)" name="MachineIds" value="@machine.MachineId" />
-        <label for="@("MachineId_" + machine.MachineId)">@machine.Name</label>
-      </div>
+  <input type="checkbox" id="@("MachineId_" + machine.MachineId)" name="MachineIds" value="@machine.MachineId" />
+  <label for="@("MachineId_" + machine.MachineId)">@machine.Name</label>
+</div>
     }
-  <input type="submit" value="Save" />
+    <input type="submit" value="Save" />
+  }
 }
