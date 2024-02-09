@@ -35,6 +35,8 @@ public class MachinesController : Controller
   public ActionResult Details(int id)
   {
     Machine thisMachine = _db.Machines
+    .Include(machine => machine.JoinEntities)
+    .ThenInclude(join => join.Engineer)
     .FirstOrDefault(machine => machine.MachineId == id);
     return View(thisMachine);
   }

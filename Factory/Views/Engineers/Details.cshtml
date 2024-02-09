@@ -1,7 +1,7 @@
 @{
   Layout = "_Layout";
 }
-
+@using Factory.Models
 @model Factory.Models.Engineer
 
 <h2>Engineer Details</h2>
@@ -26,6 +26,23 @@ else
 }
 
 <h3>@Html.DisplayNameFor(model => model.Renewal): @Html.DisplayFor(model => model.Renewal)</h3>
+<hr />
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>No machines currently assigned</p>
+}
+else
+{
+  <h4>Machines assigned: </h4>
+  <ul>
+    @foreach(EngineerMachine join in Model.JoinEntities)
+    {
+      <li>@join.Machine.Name</li>
+    }
+  </ul>
+}
+
+
 <hr />
 <p>@Html.ActionLink("Add an engineer", "Create")</p>
 <p>@Html.ActionLink("Update details", "Edit", new { id = Model.EngineerId })</p>
