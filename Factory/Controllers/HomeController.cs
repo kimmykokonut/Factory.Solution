@@ -3,7 +3,7 @@ using Factory.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Factory.Controllers; 
+namespace Factory.Controllers;
 
 public class HomeController : Controller
 {
@@ -18,7 +18,7 @@ public class HomeController : Controller
   {
     Engineer[] engineers = _db.Engineers.ToArray();
     Machine[] machines = _db.Machines.ToArray();
-    Dictionary<string,object[]> model = new Dictionary<string, object[]>();
+    Dictionary<string, object[]> model = new Dictionary<string, object[]>();
     model.Add("engineers", engineers);
     model.Add("machines", machines);
     return View(model);

@@ -1,10 +1,9 @@
-@* <a href="/">
-<img id="logo" src="~/images/logo.png" alt="logo for application, click on routes to home page">
-</a> *@
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
-
-<div id="navbar">
-  <a class="navButton m-2">@Html.ActionLink("Engineers", "Index", "Engineers")</a>
-  <a class="navButton m-2">@Html.ActionLink("Machines", "Index", "Machines")</a>
+<div class="d-flex align-items-center container" id="navBar">
+  <div class="flex-column">
+    <a class="navButton">@Html.ActionLink("Engineers", "Index", "Engineers")</a>
+    <a class="navButton">@Html.ActionLink("Machines", "Index", "Machines")</a>
+    <a href="/">
+  </div>
+  <img id=" logo" src="~/images/logo.png" alt="logo for application, click on routes to home page">
+  </a>
 </div>

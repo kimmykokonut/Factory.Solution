@@ -191,6 +191,13 @@ _Optionally you can use a file watcher so you don't have to restart the server e
 
 ## Known Bugs
 * None known at this time
+* Slight formatting weirdness: VSCode wants to autoformat View/Machines/Create.cshtml line 9 to be different than line 8; Views/Machines/Edit.cshtml line 23 auto-format puts the closing select tag one tab to the left; AddMachine.cshtml lines 25-29 also auto-format strangely.
+
+## Stretch Goals
+* Change Date display (in View/Details) for Engineer Hire Date & Machine Install Date to hide timeclock
+* Update Machine inspection property to concat dates as new ones are added and save old dates (currently overwriting value at update)
+* Add table for Incidents, which engineer repaired which machine
+* Add table for Location, which engineer/machine located at which facility
 
 ## License
 MIT License. See license.md for further information

@@ -4,51 +4,56 @@
 @using Factory.Models
 @model Factory.Models.Engineer
 
-<h2>Engineer Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<h3>@Html.DisplayNameFor(model => model.Level): @Html.DisplayFor(model => model.Level)</h3>
-<h3>@Html.DisplayNameFor(model => model.Phone): @Html.DisplayFor(model => model.Phone)</h3>
+<div class="container text-center">
+  <h2>Engineer Details</h2>
+  <hr />
+  <div class="itemDeets">
+    <h3>@Html.DisplayFor(model => model.Name)</h3>
+    <hr />
+    <h4>@Html.DisplayNameFor(model => model.Level): @Html.DisplayFor(model => model.Level)</h4>
+    <h4>@Html.DisplayNameFor(model => model.Phone): @Html.DisplayFor(model => model.Phone)</h4>
 
-<h3>Date Hired: @Html.DisplayFor(model => model.HireDate)</h3>
-@if (Model.IsActive)
-{
-  <h3>Status: Working</h3>
-}
-else
-{
-  <h3>Status: Idle</h3>
-}
-@using (Html.BeginForm("ChangeStatus", "Engineers", new { id = Model.EngineerId }))
-{
-  <label>Change status</label>
-  <input type="submit" value="working/idle" />
-}
-
-<h3>@Html.DisplayNameFor(model => model.Renewal): @Html.DisplayFor(model => model.Renewal)</h3>
-<hr />
-@if (@Model.JoinEntities.Count == 0)
-{
-  <p>No machines currently assigned</p>
-}
-else
-{
-  <h4>Machines assigned: </h4>
-  <ul>
-  @foreach (EngineerMachine join in Model.JoinEntities)
+    <h4>Date Hired: @Html.DisplayFor(model => model.HireDate)</h4>
+    @if (Model.IsActive)
     {
-      <li>@join.Machine.Name</li>
-      @using (Html.BeginForm("DeleteJoin", "Engineers"))
+      <h4>Status: Working</h4>
+    }
+    else
+    {
+      <h4>Status: Idle</h4>
+    }
+    @using (Html.BeginForm("ChangeStatus", "Engineers", new { id = Model.EngineerId }))
+    {
+      <label>Change status</label>
+      <input type="submit" value="working/idle" />
+    }
+
+    <h4>License expiration: @Html.DisplayFor(model => model.Renewal)</h4>
+    <hr />
+    @if (@Model.JoinEntities.Count == 0)
+    {
+      <p>No machines currently assigned</p>
+    }
+    else
+    {
+      <h4>Machines assigned: </h4>
+      @foreach (EngineerMachine join in Model.JoinEntities)
       {
-        @Html.Hidden("joinId", @join.EngineerMachineId)
-        <input type="submit" value="🗑️" />
+        <div class="d-flex block">
+          <h4>@join.Machine.Name</h4>
+          @using (Html.BeginForm("DeleteJoin", "Engineers"))
+          {
+            @Html.Hidden("joinId", @join.EngineerMachineId)
+            <input type="submit" value="🗑️" />
+          }
+        </div>
       }
     }
-  </ul>
-}
-<hr />
-<p>@Html.ActionLink("Add an engineer", "Create")</p>
-<p>@Html.ActionLink("Update info", "Edit", new { id = Model.EngineerId })</p>
-<p>@Html.ActionLink("Delete", "Delete", new { id = Model.EngineerId })</p>
+    <hr />
+    <p>@Html.ActionLink("⊕ Add an engineer", "Create")</p>
+    <p>@Html.ActionLink("🔄 Update info", "Edit", new { id = Model.EngineerId })</p>
+    <p>@Html.ActionLink("🗑️ Delete", "Delete", new { id = Model.EngineerId })</p>
 
-<p>@Html.ActionLink("Add a machine", "AddMachine", new { id = Model.EngineerId })</p>
+    <p>@Html.ActionLink("⊕ Add a machine", "AddMachine", new { id = Model.EngineerId })</p>
+  </div>
+</div>
